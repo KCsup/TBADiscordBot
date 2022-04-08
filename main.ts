@@ -4,10 +4,12 @@ import { readdir } from "fs/promises";
 import * as fs from "fs";
 import * as events from "./events";
 
-export let prefix = "!";
-export let commands = [Command];
+export const prefix = "!";
+export let commands = [];
+export const tbaUrl = "https://www.thebluealliance.com/api/v3/";
 
-let token = JSON.parse(fs.readFileSync(".token.json").toString()).token;
+export const token = JSON.parse(fs.readFileSync("./token.json").toString()).token;
+export const tba = JSON.parse(fs.readFileSync("../token.json").toString()).tba;
 export const bot = new Client({intents:["GUILDS", "GUILD_MEMBERS", "GUILD_MESSAGES"]});
 
 readdir("./commands/").then(async (files) => {
